@@ -1,0 +1,94 @@
+<div>
+</div>
+
+<button id="버튼">버튼</button>
+
+
+<script>
+
+    'use strict'; // 자바스크립트 엄격하게 사용
+
+    console.log(this) 
+
+    function 함수(){
+        console.log(this);
+    }
+
+    함수();
+    window.함수();
+
+    /* 1.window
+        - 그냥 쓰거나 일반 함수 안에 쓰면 {window}
+    */
+
+    var 오브젝트 = {
+        data : 'kim',
+        함수 : function(){
+            console.log(this)
+        }
+    }
+
+    오브젝트.함수();
+
+
+    var 오브젝트 = {
+        data : {
+            함수 : () => {
+                console.log(this)
+            }
+        }
+    }
+
+    오브젝트.data.함수();
+
+    /* 
+        2. 오브젝트 내 함수 안에서 쓰면 그 함수를 가지고 있는 오브젝트를 뜻함
+    
+        * 신문법 Arrow Function 특징 :
+            this 값을 함수 밖에 있던 거 그대로 씀 
+    */
+
+
+    var 어쩌구 = {}
+
+    function 기계(){
+        this.이름 = 'kim'    
+    }
+    
+    var 오브젝트 = new 기계();
+
+    /*
+       3. 기계 안에서 쓰면 새로 생성되는 오브젝트를 뜻함(instance)
+    */
+
+
+
+    document.getElementById('버튼').addEventListener('click',
+    function(e){
+        //console.log(this);
+        //console.log(e.currentTarget);
+
+        var 어레이 = [1,2,3];
+        어레이.forEach(function(a){
+            console.log(a)
+        })
+    });
+
+    /*
+        4. 이벤트리스너 안에서는 e.currentTarget
+         e.currentTarget : 지금 이벤트가 동작하는 곳
+    */
+
+
+   var 오브젝트 = {
+        이름들 : ['김', '이', '박'],
+        함수 : function(){
+            console.log(this);
+            오브젝트.이름들.forEach(function(){
+                console.log(this);
+            })
+        }
+   }
+
+   오브젝트.함수();
+</script>
