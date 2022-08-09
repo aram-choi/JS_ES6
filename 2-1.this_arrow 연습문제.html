@@ -1,0 +1,69 @@
+<div>
+
+</div>
+<button id="버튼">버튼이에요</button>
+<script>
+
+/*
+    1. 간단한 메소드 만들기
+    사람이라는 오브젝트에 sayHi라는 함수(메소드)를 하나 추가하고 싶다.
+    사람.sayHi()라고 작성하면 콘솔창에 '안녕 나는 손흥민'이라는 글자가 나와야 함.
+    '손흥민'이라는 이름을 하드코딩해서 출력하기보다는 
+    실제 내 오브젝트에 있는 name에 해당하는 값이 출력되면 좋을 것 같다.
+    Q.sayHi()라는 함수를 어디서 어떻게 만들면 될까?
+*/
+
+var 사람 = {
+    name : '손흥민',
+    sayhi : function(){
+       console.log( '안녕 나는 ' + this.name );
+    }
+}
+
+사람.sayhi();
+
+// () => 는 함수 밖에 있는 this 가리킴 
+
+/*
+    2. 오브젝트 내의 데이터를 전부 더해주는 메소드 만들기
+
+*/
+var 자료 = {
+    data : [1,2,3,4,5]
+}
+
+자료.전부더하기 = function(){
+    var 합 = 0;
+    this.data.forEach(function(a){
+        합 = 합 + a;
+    });
+    console.log(합);
+}
+
+자료.전부더하기();
+
+
+
+
+/*
+    3. 
+*/
+
+//setTimeout(function(){console.log('안녕')}, 1000) 
+
+//함수 = () => { console.log('안녕안녕')}
+
+//setTimeout(함수, 1000)
+
+
+
+document.getElementById('버튼').addEventListener('click', function(){
+
+    setTimeout(()=>{ console.log(this.innerHTML) }, 1000);
+});
+
+
+
+
+
+</script>
